@@ -7,6 +7,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
 
 // The over-scroll distance that moves the indicator to its maximum
 // displacement, as a percentage of the scrollable's container extent.
@@ -205,8 +206,8 @@ class NestedScrollViewRefreshIndicatorState
     if (!widget.notificationPredicate(notification)) {
       return false;
     }
-    maxContainerExtent = math.max(
-        notification.metrics.viewportDimension, maxContainerExtent);
+    maxContainerExtent =
+        math.max(notification.metrics.viewportDimension, maxContainerExtent);
     if (notification is ScrollStartNotification &&
         notification.metrics.extentBefore == 0.0 &&
         _mode == null &&
@@ -467,13 +468,7 @@ class NestedScrollViewRefreshIndicatorState
                 child: AnimatedBuilder(
                   animation: _positionController,
                   builder: (BuildContext context, Widget child) {
-                    return RefreshProgressIndicator(
-                      semanticsLabel: widget.semanticsLabel ?? MaterialLocalizations.of(context).refreshIndicatorSemanticLabel,
-                      semanticsValue: widget.semanticsValue,
-                      value: showIndeterminateIndicator ? null : _value.value,
-                      valueColor: _valueColor,
-                      backgroundColor: widget.backgroundColor,
-                    );
+                    return CupertinoActivityIndicator();
                   },
                 ),
               ),
