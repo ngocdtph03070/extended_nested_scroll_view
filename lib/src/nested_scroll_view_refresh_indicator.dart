@@ -468,7 +468,15 @@ class NestedScrollViewRefreshIndicatorState
                 child: AnimatedBuilder(
                   animation: _positionController,
                   builder: (BuildContext context, Widget child) {
-                    return CupertinoActivityIndicator();
+                    return ClipRRect(
+    borderRadius: BorderRadius.circular(15),
+    child: Container(
+    color: Colors.white,
+    width: 30.0,
+    height: 30.0,
+    child: CupertinoActivityIndicator(),
+    ),
+    );
                   },
                 ),
               ),
